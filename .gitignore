@@ -21,10 +21,6 @@ data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
-# Reports generated
-reports/figures/*
-!reports/figures/.gitkeep
-
 # OS / Editor
 .DS_Store
 Thumbs.db
