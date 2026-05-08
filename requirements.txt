@@ -7,4 +7,3 @@ ipykernel
 openpyxl
 scikit-learn
 plotly
-ucimlrepo
