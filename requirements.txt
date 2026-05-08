@@ -3,6 +3,8 @@ numpy
 matplotlib
 seaborn
 jupyter
+ipykernel
 openpyxl
 scikit-learn
 plotly
+ucimlrepo
