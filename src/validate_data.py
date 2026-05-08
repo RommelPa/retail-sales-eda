@@ -32,12 +32,39 @@ def load_processed_data() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
             f"Missing files:\n{missing}"
         )
 
-    clean_data = pd.read_csv(CLEAN_DATA_PATH)
-    valid_sales = pd.read_csv(VALID_SALES_PATH)
-    customer_sales = pd.read_csv(CUSTOMER_SALES_PATH)
+    dtype_mapping = {
+        "InvoiceNo": "string",
+        "StockCode": "string",
+        "Description": "string",
+        "CustomerID": "string",
+        "Country": "string",
+        "InvoiceMonth": "string",
+        "InvoiceDateOnly": "string",
+        "InvoiceDayOfWeek": "string",
+    }
+
+    clean_data = pd.read_csv(
+        CLEAN_DATA_PATH,
+        dtype=dtype_mapping,
+        parse_dates=["InvoiceDate"],
+        low_memory=False,
+    )
+
+    valid_sales = pd.read_csv(
+        VALID_SALES_PATH,
+        dtype=dtype_mapping,
+        parse_dates=["InvoiceDate"],
+        low_memory=False,
+    )
+
+    customer_sales = pd.read_csv(
+        CUSTOMER_SALES_PATH,
+        dtype=dtype_mapping,
+        parse_dates=["InvoiceDate"],
+        low_memory=False,
+    )
 
     return clean_data, valid_sales, customer_sales
-
 
 def validate_valid_sales(valid_sales: pd.DataFrame) -> None:
     """
